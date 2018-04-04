@@ -31,7 +31,19 @@
 - (void)pluginInitialize
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pageDidLoad) name:CDVPageDidLoadNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAppDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAppWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
 
+    [self setVisible:YES];
+}
+
+- (void)onAppDidBecomeActive:(UIApplication *)application
+{
+    [self setVisible:NO andForce:YES];
+}
+
+- (void)onAppWillResignActive:(UIApplication *)application
+{
     [self setVisible:YES];
 }
 
