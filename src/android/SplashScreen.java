@@ -162,7 +162,6 @@ public class SplashScreen extends CordovaPlugin {
 	
 	@Override
 	protected void onResume() {
-		super.onResume();
 		Activity activity = this.cordova.getActivity();
 		activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
 	}
