@@ -160,7 +160,7 @@ public class SplashScreen extends CordovaPlugin {
     }
 	
 	@Override
-	public void onResume() {
+	public void onResume(boolean multitasking) {
 		this.cordova.getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
 	}
 
