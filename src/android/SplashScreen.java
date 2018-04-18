@@ -145,6 +145,8 @@ public class SplashScreen extends CordovaPlugin {
         }
         // hide the splash screen to avoid leaking a window
         this.removeSplashScreen(true);
+		Activity activity = this.cordova.getActivity();
+		activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
     }
 
     @Override
@@ -157,6 +159,13 @@ public class SplashScreen extends CordovaPlugin {
         // If we set this to true onDestroy, we lose track when we go from page to page!
         //firstShow = true;
     }
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		Activity activity = this.cordova.getActivity();
+		activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+	}
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
