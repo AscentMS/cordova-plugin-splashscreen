@@ -145,8 +145,7 @@ public class SplashScreen extends CordovaPlugin {
         }
         // hide the splash screen to avoid leaking a window
         this.removeSplashScreen(true);
-		Activity activity = this.cordova.getActivity();
-		activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
+		this.cordova.getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
     }
 
     @Override
@@ -162,8 +161,7 @@ public class SplashScreen extends CordovaPlugin {
 	
 	@Override
 	protected void onResume() {
-		Activity activity = this.cordova.getActivity();
-		activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+		this.cordova.getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
 	}
 
     @Override
